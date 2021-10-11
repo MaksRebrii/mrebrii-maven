@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 class StringCollectionImplTest {
     private StringCollectionImpl collection;
     private int initializationSize = 10;
@@ -17,12 +15,12 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void when_added_10_elements_then_size_must_be_10() {
+    void should_make_size_10_when_added_10_elements() {
         Assertions.assertEquals(initializationSize, collection.size());
     }
 
     @Test
-    void get_4th_element(){
+    void should_get_element_by_index(){
         //expected
         String expectedElement = "String4";
 
@@ -33,7 +31,7 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void when_added_new_element_size_must_increase(){
+    void should_add_element(){
         String newValue = "String10";
         collection.add(newValue);
 
@@ -46,7 +44,7 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void add_element_in_the_middle(){
+    void should_add_element_by_index(){
         String newValue = "checkElement";
         int indexOfNewElement = 5;
         collection.add(indexOfNewElement, newValue);
@@ -60,7 +58,7 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void when_delete_element_size_should_decrease(){
+    void should_delete_element_by_value(){
         String elementToDelete = "String9";
         collection.delete(elementToDelete);
 
@@ -74,7 +72,7 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void when_check_containing_contains_object_then_result_must_be_true(){
+    void  should_return_true_when_contains_element(){
         String checkedValue = "Test123";
         collection.add(checkedValue);
         Assertions.assertTrue(collection.contains(checkedValue));
@@ -82,7 +80,7 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void when_check_uncontaining_object_then_result_must_be_false(){
+    void  should_return_false_when_doesnt_contain_element(){
         String addedValue = "Test123";
         String checkedValue = "Test321";
         collection.add(addedValue);
@@ -91,16 +89,16 @@ class StringCollectionImplTest {
     }
 
     @Test
-    void  when_clear_collection_then_size_must_be_zero(){
+    void  should_clear_collection(){
         collection.clear();
         Assertions.assertEquals(0, collection.size());
     }
 
     @Test
-    void check_equals(){
-        StringCollectionImpl colectionToCheck = formCollection();
+    void should_return_true_when_collections_are_equal(){
+        StringCollectionImpl collectionToCheck = formCollection();
 
-        Assertions.assertTrue(collection.equals(colectionToCheck));
+        Assertions.assertTrue(collection.equals(collectionToCheck));
     }
 
     private StringCollectionImpl formCollection(){
