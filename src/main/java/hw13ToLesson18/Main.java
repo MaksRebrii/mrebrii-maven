@@ -1,9 +1,7 @@
 package hw13ToLesson18;
 
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
 
 public class Main {
 
@@ -18,10 +16,8 @@ public class Main {
     }
 
     public static List<String> changeCollection(List<String> list) {
-        Predicate<String> startsWithVowel = o -> o.startsWith("a") || o.startsWith("e") || o.startsWith("i") || o.startsWith("o") || o.startsWith("u") || o.startsWith("y") ||
-                o.startsWith("A") || o.startsWith("E") || o.startsWith("I") || o.startsWith("O") || o.startsWith("U") || o.startsWith("Y");
         return list.stream().
-                filter(startsWithVowel)
+                filter(word -> word.matches("[AEOUIYaeouiy].*"))
                 .map(String::toUpperCase)
                 .collect(Collectors.toList());
     }
@@ -31,5 +27,4 @@ public class Main {
                 .filter(str -> str.length() == 4 && str.equals(str.toLowerCase()))
                 .collect(Collectors.toList());
     }
-
 }
