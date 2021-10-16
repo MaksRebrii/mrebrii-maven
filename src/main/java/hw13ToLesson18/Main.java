@@ -10,9 +10,9 @@ public class Main {
     private Main() {
     }
 
-    public static double getAverage(List<Integer> list) {
+    public static double getAverage(List<? extends Number> list) {
         return list.stream()
-                .mapToInt(Integer::intValue)
+                .mapToDouble(Number::doubleValue)
                 .average()
                 .orElseThrow(IllegalArgumentException::new);
     }
