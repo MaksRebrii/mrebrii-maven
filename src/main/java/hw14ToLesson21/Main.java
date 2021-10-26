@@ -12,18 +12,18 @@ public class Main {
     private static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
-        ATM atm = new ATM(100_000, 10_000, 100_000);
+        ATM atm = new ATM(100_000, 100_000, 100_000);
 
         for (int i = 0; i < OPERATION_AMOUNT; i++) {
             executorService.execute(() -> {
                 int rand = RANDOM.nextInt(RANDOM_BOUND);
-                if (rand % 2 == 0)
+                if (rand % 2 == 0) {
                     atm.getMoney();
-                else
+                } else {
                     atm.putMoney();
+                }
             });
         }
-
+        executorService.shutdown();
     }
-
 }

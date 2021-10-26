@@ -19,17 +19,14 @@ public class ATM {
     public void getMoney() {
         int amountMoneyTakenOff = randomAmountOfMoney(maximumWithdrawalAmount);
         synchronized (monitor) {
-            if (this.sum >= amountMoneyTakenOff) {
-                this.sum -= amountMoneyTakenOff;
-                System.out.printf("%s - снятие - %d%n", Thread.currentThread().getName(), amountMoneyTakenOff);
-            } else {
+            while (this.sum < amountMoneyTakenOff) {
                 Scanner scanner = new Scanner(System.in);
-                do {
-                    System.out.printf("В банкомате недостаточно денег для снятия  %s%n ", Thread.currentThread().getName());
-                    System.out.printf("Введите сумму меньшую чем %d: ", amountMoneyTakenOff);
-                    amountMoneyTakenOff = scanner.nextInt();
-                } while (this.sum < amountMoneyTakenOff);
+                System.out.printf("В банкомате недостаточно денег для снятия  %s%n ", Thread.currentThread().getName());
+                System.out.printf("Введите сумму для снятия меньшую чем %d: ", amountMoneyTakenOff);
+                amountMoneyTakenOff = scanner.nextInt();
             }
+            this.sum -= amountMoneyTakenOff;
+            System.out.printf("%s - снятие - %d%n", Thread.currentThread().getName(), amountMoneyTakenOff);
         }
     }
 
@@ -41,7 +38,7 @@ public class ATM {
         }
     }
 
-    private int randomAmountOfMoney(int topBorder){
-        return (int)(Math.random() * (topBorder - MIN_MONEY) + MIN_MONEY);
+    private int randomAmountOfMoney(int topBorder) {
+        return (int) (Math.random() * (topBorder - MIN_MONEY) + MIN_MONEY);
     }
 }
