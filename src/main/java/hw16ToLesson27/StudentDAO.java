@@ -46,7 +46,6 @@ public class StudentDAO {
     }
 
     public boolean deleteStudentById(int id) {
-        int result = 0;
 
         try (PreparedStatement statement = getConnection().prepareStatement(SQLUser.DELETE_USER_BY_ID.query)) {
             statement.setInt(1, id);
