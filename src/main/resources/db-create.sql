@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS students
     student_id     INT PRIMARY KEY AUTO_INCREMENT,
     student_fio    VARCHAR(152) NOT NULL,
     group_id       INT,
-    admission_year YEAR         NOT NULL,
+    admission_year INT          NOT NULL,
     CONSTRAINT group_id_fk FOREIGN KEY (group_id) REFERENCES student_groups (group_id)
 );
 
