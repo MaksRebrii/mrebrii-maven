@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/hillel_hw15_to_lesson26</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">19022002__Max</property>
+
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="connection.autocommit">true</property>
+
+        <!--<property name="hbm2ddl.auto">validate</property>-->
+
+        <property name="connection.pool_size">1</property>
+        <property name="current_session_context_class">thread</property>
+
+        <mapping class="hw17ToLesson30.entity.Student"/>
+        <mapping class="hw17ToLesson30.entity.StudentGroup"/>
+    </session-factory>
+</hibernate-configuration>
